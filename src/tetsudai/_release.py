@@ -72,7 +72,11 @@ def set_initial_version() -> bool:
     update_version(lambda _: Version(1, 0, 0))
     return True
 
-uv_build_stage = Stage('uv build', lambda: subprocess.run(['uv', 'build']).returncode == 0)
+def clean_and_build() -> bool:
+    subprocess.run(['rm', '-rf', 'dist'], check=True)
+    return subprocess.run(['uv', 'build']).returncode == 0
+
+uv_build_stage = Stage('uv build', clean_and_build)
 
 def uv_publish_stage(pypi_token: str) -> Stage:
     return Stage(
