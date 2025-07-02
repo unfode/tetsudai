@@ -1,0 +1,28 @@
+[project]
+name = "tetsudai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "unfode", email = "forrest.futao.wei@gmail.com" },
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pyright>=1.1.402",
+    "tomli-w>=1.2.0",
+]
+
+[build-system]
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+reportUnusedImport = "none"
+
+[dependency-groups]
+dev = [
+    "ipython>=9.3.0",
+]
